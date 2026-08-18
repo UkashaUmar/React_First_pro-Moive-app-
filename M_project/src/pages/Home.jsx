@@ -1,5 +1,4 @@
 import React, { useState ,useEffect } from 'react'
-import Moivecard from '../Components/Moivecard'
 import Navbar from '../Components/Navbar';
 import { searchMoives,searchTV_Series, getmultiSearch,searchMulti, getpopularMoives ,getTV_Series } from '../Services/api';
 import { data } from 'react-router-dom';
@@ -14,24 +13,6 @@ function Home() {
     const [series, setseries] = useState([])
     const [multi, setmulti] = useState([])
 
-    // useEffect(()=>{
-    //   const loadsearchMutli = async() => {
-    //     setloading(true)
-    //     try {
-    //       const mutlisear= await getmultiSearch();
-    //       setmulti(mutlisear)
-    //     } catch(err){
-    //       console.log(err)
-    //       seterror("failed the moive....")
-    //     }
-    //     finally {
-    //       setloading(false)
-    //     }
-    //   }
-    //    loadsearchMutli()
-    // },[])
-
-    
     
     useEffect(()=>{
       const loadpopularMoives = async() => {
@@ -71,9 +52,10 @@ function Home() {
   const handleserach = async (e)=>{
     e.preventDefault()
 
-    const moviess=await searchMulti(searchQuery)
-    setMoives(moviess)
-    setseries(moviess)
+    const searchitems=await searchMulti(searchQuery)
+  
+    setmulti(searchitems)
+    
     setsearchQuery("")
         
 
@@ -83,8 +65,7 @@ function Home() {
  setMoives(popularMoives);
 const popularTV_Series = await getTV_Series();
           setseries(popularTV_Series)
-          const mutlisear= await getmultiSearch();
-          setmulti(mutlisear)
+    setmulti([])
 
 
  }
@@ -109,17 +90,25 @@ const popularTV_Series = await getTV_Series();
   resetSearch()
 }} type='button'>Reset</button>
             <button className='bg-black text-white text-sm rounded-md p-2 m-1 ' type='submit'>Search</button>
-        <h1 className='text-white font-bold text-5xl mt-8'>Popular Moives</h1>
-        
+      
         </form>
+{loading ? (
+          <div>"loading....."</div>
+        ):(
+          <div className='flex flex-wrap gap-1 p-0 ml-15'>
+            {multi?.map((series)=> (
+              <Seriescard name = {series.title} relase_date={series.relase_date} poster_path={series.poster_path} key={series.id}/>
+            ))}
+      </div>
+        )}
+          <h1 className='text-white font-bold text-5xl mt-8'>Popular Moives</h1>
 
         {loading ? (
           <div>"loading....."</div>
         ):(
           <div className='flex flex-wrap gap-1 p-0 ml-15'>
-            
-            {moives?.map((moive)=> (
-              <Moivecard movie = {moive} key={moive.id}/>
+            {moives?.map((series)=> (
+              <Seriescard name = {series.title} relase_date={series.relase_date} poster_path={series.poster_path} key={series.id}/>
             ))}
       </div>
         )}
@@ -130,7 +119,7 @@ const popularTV_Series = await getTV_Series();
           <div className='flex flex-wrap gap-1 p-0 ml-15'>
             
             {series?.map((series)=> (
-              <Seriescard series = {series} key={series.id}/>
+              <Seriescard name = {series.name} relase_date={series.relase_date} poster_path={series.poster_path} key={series.id}/>
             ))}
       </div>
         )}

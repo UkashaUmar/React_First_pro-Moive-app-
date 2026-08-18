@@ -21,31 +21,49 @@ const data = await response.json()
 }
 }  
 
+///trending moivesw
+
+export const gettrendingMoives = async ()=> {
+    const respone = await fetch(`${BASE_URL}/moive/top_rated?api_key=${API_KEY}`);
+    const data= await respone.json()
+    console.log(data.results)
+return  data.results
+}  
+
+export const searchtrendingMoives = async (query)=> {
+try {
+     const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
+const data = await response.json()
+} catch (error) {
+
+    console.log(error)
+      
+}
+}  
+
+
+
+
+
 //muliti Search//
 export const getmultiSearch = async (query)=> {
     const respone = await fetch(`${BASE_URL}/search/multi?api_key=${API_KEY}&query=${query}&include_adult=false&language=en-US&page=1`);
     const data= await respone.json()
-
+    console.log(data.results)
 return  data.results
 }  
 
 
 export const searchMulti = async (query)=> {
-
+try {
      const response = await fetch(`${BASE_URL}/search/multi?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
 const data = await response.json()
 return data.results
-}  
-
-export const search_Multi = async ()=> {
-try {
-     const response = await fetch(`${BASE_URL}/search/multi?api_key=${API_KEY}`);
-const data = await response.json()
 } catch (error) {
     console.log(error)
       
 }
-} 
+}  
 
 
 
@@ -88,4 +106,3 @@ return data.results
       
 }
 }  
-

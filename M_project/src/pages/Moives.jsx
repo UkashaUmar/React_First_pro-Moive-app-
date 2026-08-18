@@ -1,9 +1,8 @@
 import React, { useState ,useEffect } from 'react'
-import Moivecard from '../Components/Moivecard'
 import Navbar from '../Components/Navbar';
 import { searchMoives, getpopularMoives } from '../Services/api';
 import { data } from 'react-router-dom';
-
+import Seriescard from '../Components/TV_seriescard';
 
 function PgMoives() {
   const [searchQuery, setsearchQuery] = useState("")
@@ -50,6 +49,7 @@ function PgMoives() {
       {/* <Navbar/> */}
 
     <div className='h-100% w-100% bg-gray-600 '>
+      
         <form onSubmit={handleserach} className=''>
             <input className='p-1 m-1 rounded-md'
             type="text" 
@@ -64,14 +64,15 @@ function PgMoives() {
   resetSearch()
 }} type='button'>Reset</button>
             <button className='bg-black text-white text-sm rounded-md p-2 m-1 ' type='submit'>Search</button>
+            
         </form>
-
+<h1 className='font-bold text-white text-5xl mt-3 ml-2'>Movie</h1>
         {loading ? (
           <div>"loading....."</div>
         ):(
           <div className='flex flex-wrap p-5 ml-4'>
-            {moives?.map((moive)=> (
-              <Moivecard movie = {moive} key={moive.id}/>
+            {moives?.map((series)=> (
+              <Seriescard name = {series.title} first_air_date={series.first_air_date} poster_path={series.poster_path} key={series.id}/>
             ))}
       </div>
         )}
