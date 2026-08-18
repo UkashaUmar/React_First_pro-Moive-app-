@@ -32,9 +32,9 @@ function PgMoives() {
   const handleserach = async (e)=>{
     e.preventDefault()
 
-
-    const moviess=await searchMoives(searchQuery)
-    setMoives(moviess)
+    const searchpopmoive=await searchMoives(searchQuery)
+    setMoives(searchpopmoive)
+    console.log("heloo")
     setsearchQuery("")
   };
  const resetSearch = async() =>{
@@ -60,7 +60,7 @@ function PgMoives() {
               setsearchQuery(e.target.value)
            
            }}/>
-<button className='bg-black text-white text-sm rounded-md p-2 m-1 ' onClick={()=>{
+<button className='bg-black text-white text-sm rounded-md p-2 mt-27 ' onClick={()=>{
   resetSearch()
 }} type='button'>Reset</button>
             <button className='bg-black text-white text-sm rounded-md p-2 m-1 ' type='submit'>Search</button>
@@ -70,7 +70,7 @@ function PgMoives() {
         {loading ? (
           <div>"loading....."</div>
         ):(
-          <div className='flex flex-wrap p-5 ml-4'>
+          <div className='flex flex-wrap p-5 ml-4 '>
             {moives?.map((series)=> (
               <Seriescard name = {series.title} first_air_date={series.first_air_date} poster_path={series.poster_path} key={series.id}/>
             ))}

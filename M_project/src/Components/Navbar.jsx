@@ -6,7 +6,7 @@ import Favorite from '../pages/TV_Series';
 function Navbar() {
   return (
   <>
-    <nav className='bg-zinc-800 p-4 text-rose-500 flex justify-between font-bold'>
+    <nav className='fixed top-0 left-0 w-full bg-zinc-800 p-4 text-rose-500 flex justify-between font-bold'>
       <div className='m-5'>
          <Link to="/">Moive Apps</Link> 
       </div>

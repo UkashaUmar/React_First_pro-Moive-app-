@@ -106,15 +106,15 @@ const popularseries = await getTV_Series();
         )}
 
 
-         <h1 className='text-white font-bold text-4xl'  >Popular TV Series</h1>
+         <h1 className='text-white font-bold text-4xl'>Popular TV Series</h1>
 
           {loading ? (
           <div>"loading....."</div>
         ):(
           <div className='flex flex-wrap gap-1 p-0 ml-15'>
             
-            {Popseries?.map((series)=> (
-              <Seriescard series = {series} key={series.id}/>
+           {Popseries?.map((series)=> (
+              <Seriescard name = {series.name} first_air_date={series.first_air_date} poster_path={series.poster_path} key={series.id}/>
             ))}
       </div>
         )}

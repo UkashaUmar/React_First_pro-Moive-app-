@@ -1,10 +1,12 @@
+import { data } from "react-router-dom";
+
 const API_KEY = "29c903a6f9eb2f274b0c6017a06ae9e8"
 const BASE_URL='https://api.themoviedb.org/3';
 
 ///populer Moives API /////
 
 
-export const getpopularMoives = async ()=> {
+export const getpopularMoives = async (query)=> {
     const respone = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
     const data= await respone.json()
     
@@ -14,6 +16,7 @@ export const searchMoives = async (query)=> {
 try {
      const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
 const data = await response.json()
+return data.results
 } catch (error) {
 
     console.log(error)

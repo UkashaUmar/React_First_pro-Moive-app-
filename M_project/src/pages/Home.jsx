@@ -71,9 +71,9 @@ const popularTV_Series = await getTV_Series();
  }
     return (
 <>
-      {/* <Navbar/> */}
 
-    <div className='h-100% w-100% bg-gray-600  '>
+
+    <div className=' bg-gray-600 mt-20'>
       
         <form onSubmit={handleserach} className='p-5 '>
           
@@ -95,7 +95,7 @@ const popularTV_Series = await getTV_Series();
 {loading ? (
           <div>"loading....."</div>
         ):(
-          <div className='flex flex-wrap gap-1 p-0 ml-15'>
+          <div className='h-100% w-100% flex flex-wrap gap-1 p-0 ml-15 '>
             {multi?.map((series)=> (
               <Seriescard name = {series.title} relase_date={series.relase_date} poster_path={series.poster_path} key={series.id}/>
             ))}
@@ -106,7 +106,7 @@ const popularTV_Series = await getTV_Series();
         {loading ? (
           <div>"loading....."</div>
         ):(
-          <div className='flex flex-wrap gap-1 p-0 ml-15'>
+          <div className=' flex flex-wrap gap-1 p-0 ml-20'>
             {moives?.map((series)=> (
               <Seriescard name = {series.title} relase_date={series.relase_date} poster_path={series.poster_path} key={series.id}/>
             ))}
