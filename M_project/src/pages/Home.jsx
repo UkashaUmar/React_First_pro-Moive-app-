@@ -73,11 +73,11 @@ const popularTV_Series = await getTV_Series();
 <>
 
 
-    <div className=' bg-gray-600 mt-20'>
+    <div className='h-100% w-100% bg-gray-600 '>
       
         <form onSubmit={handleserach} className='p-5 '>
           
-            <input className='p-1 m-1 rounded-md'
+            <input className='p-1 m-1 rounded-md mt-25'
             type="text" 
             placeholder='Search for........'
             value={searchQuery}
@@ -106,20 +106,20 @@ const popularTV_Series = await getTV_Series();
         {loading ? (
           <div>"loading....."</div>
         ):(
-          <div className=' flex flex-wrap gap-1 p-0 ml-20'>
+          <div className=' flex flex-wrap gap-1 p-0 ml-15'>
             {moives?.map((series)=> (
-              <Seriescard name = {series.title} relase_date={series.relase_date} poster_path={series.poster_path} key={series.id}/>
+              <Seriescard name = {series.title} first_air_date={series.release_date} poster_path={series.poster_path} key={series.id}/>
             ))}
       </div>
         )}
-         <h1 className='text-white font-bold text-4xl'>Populer TV Series</h1>
+         <h1 className='text-white font-bold text-5xl mt-8'>Populer TV Series</h1>
          {loading ? (
           <div>"loading....."</div>
         ):(
           <div className='flex flex-wrap gap-1 p-0 ml-15'>
             
             {series?.map((series)=> (
-              <Seriescard name = {series.name} relase_date={series.relase_date} poster_path={series.poster_path} key={series.id}/>
+              <Seriescard name = {series.name} first_air_date={series.first_air_date} poster_path={series.poster_path} key={series.id}/>
             ))}
       </div>
         )}

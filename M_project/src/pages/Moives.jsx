@@ -66,13 +66,13 @@ function PgMoives() {
             <button className='bg-black text-white text-sm rounded-md p-2 m-1 ' type='submit'>Search</button>
             
         </form>
-<h1 className='font-bold text-white text-5xl mt-3 ml-2'>Movie</h1>
+<h1 className='text-white font-bold text-5xl mt-8'>Movie</h1>
         {loading ? (
           <div>"loading....."</div>
         ):(
           <div className='flex flex-wrap p-5 ml-4 '>
             {moives?.map((series)=> (
-              <Seriescard name = {series.title} first_air_date={series.first_air_date} poster_path={series.poster_path} key={series.id}/>
+              <Seriescard name = {series.title} first_air_date={series.release_date} poster_path={series.poster_path} key={series.id}/>
             ))}
       </div>
         )}
