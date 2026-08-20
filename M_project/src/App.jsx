@@ -10,8 +10,7 @@ function App(){
   return (
     <div>
       <Navbar/>
-{/* <script src='api'></script> */}
-      {/* <Moivecard/> */}
+     
     <main>
       <Routes>
         <Route path="/" element={<Home/>}/>

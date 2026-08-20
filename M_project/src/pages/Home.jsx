@@ -4,7 +4,6 @@ import { searchMoives,searchTV_Series, getmultiSearch,searchMulti, getpopularMoi
 import { data } from 'react-router-dom';
 import TV_Series from './TV_Series';
 import Seriescard from '../Components/TV_seriescard';
-
 function Home() {
   const [searchQuery, setsearchQuery] = useState("")
    const [moives , setMoives] = useState ([])
